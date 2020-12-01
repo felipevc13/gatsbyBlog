@@ -8,7 +8,6 @@ module.exports = {
   plugins: [
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-typescript`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -31,10 +30,11 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-typescript`,
+    `gatsby-plugin-typescript-checker`,
     {
       resolve: `gatsby-plugin-graphql-codegen`,
       options: {
-        fileName: `./gatsby-graphql.ts`,
         documentPaths: ['./src/**/*.{ts,tsx}', './node_modules/gatsby-*/**/*.js', './gatsby-node.ts'],
       },
     },
