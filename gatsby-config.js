@@ -16,8 +16,28 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `posts`,
+        path: `${__dirname}/posts`,
+      },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [],
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-graphql-codegen`,
+      options: {
+        fileName: `./gatsby-graphql.ts`,
+        documentPaths: ['./src/**/*.{ts,tsx}', './node_modules/gatsby-*/**/*.js', './gatsby-node.ts'],
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
