@@ -1,6 +1,8 @@
 import styled, {css} from "styled-components"
 import { Link } from "gatsby"
-import {PostItemProps} from "."
+import {MarkdownRemarkFrontmatter} from "../../../graphql-types"
+
+
 
 export const PostItemLink = styled(Link)`
   color: #8899a6;
@@ -18,10 +20,9 @@ export const PostItemWrapper = styled.section`
   padding: 2rem 3rem;
   width: 100%;
 `
-type BackProps = Pick<PostItemProps, "background">
 
 
-export const PostItemTag = styled.div<BackProps>`
+export const PostItemTag = styled.div<MarkdownRemarkFrontmatter>`
   align-items: center;
   background: ${props => props.background};
   border-radius: 50%;

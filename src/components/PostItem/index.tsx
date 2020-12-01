@@ -1,20 +1,13 @@
 import React from "react";
 import * as S from "./styled"
+import {MarkdownRemarkFrontmatter, MarkdownRemark} from "../../../graphql-types"
 
-export type PostItemProps = {
-  slug: string
-  category: string
-  date: string
-  timeToRead: string
-  title: string
-  description: string
-  background?: string
-}
 
-const PostItem = ({background = "#1fa1f2", slug, category, date, timeToRead, title, description}: PostItemProps) => (
+
+const PostItem = ({background, category, date, timeToRead, title, description}: MarkdownRemarkFrontmatter & Pick<MarkdownRemark, "timeToRead"> ) => (
 <S.PostItemLink to="/slug/">
 <S.PostItemWrapper>
-  <S.PostItemTag background={background}>Misc</S.PostItemTag>
+  <S.PostItemTag background={background}>{category}</S.PostItemTag>
   <S.PostItemInfo>
     <S.PostItemDate>{date} • {timeToRead} min de leitura</S.PostItemDate>
     <S.PostItemTitle>{title}</S.PostItemTitle>

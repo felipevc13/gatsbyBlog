@@ -3,8 +3,9 @@ import Layout from '../components/Layout';
 import SEO from '../components/seo';
 import PostItem from '../components/PostItem';
 import { useStaticQuery, graphql } from 'gatsby';
+import {PostListQuery} from "../../graphql-types"
 
-export const PostListQuery = graphql`
+export const postQuery= graphql`
   query PostList {
     allMarkdownRemark {
       edges {
@@ -24,23 +25,26 @@ export const PostListQuery = graphql`
 `;
 
 const IndexPage = () => {
-  const { allMarkdownRemark } = useStaticQuery(PostListQuery);
+  const { allMarkdownRemark } = useStaticQuery(postQuery) as PostListQuery ;
 
   const postList = allMarkdownRemark.edges;
 
   return (
     <Layout>
-      <SEO title="Home" />
-      {postList.map(({ node: { frontmatter: background, category, date, description, title }, timeToRead }) => {
-        <PostItem
-          slug="/about/"
-          background={background}
-          category={category}
-          date={date}
-          timeToRead={timeToRead}
-          title={title}
-          description={description}
-        />;
+      <SEO title="Home"/>
+      {postList.map(({ node }) => {
+        {!!node.frontmatter && (
+<PostItem
+          background={node.frontmatter.background}
+          category={node.frontmatter.category}
+          date={node.frontmatter.date}
+          timeToRead={node.timeToRead}
+          title={node.frontmatter.title}
+          description={node.frontmatter.description}
+        />
+
+        )}
+        
       })}
     </Layout>
   );
