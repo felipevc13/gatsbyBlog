@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Sidebar from '../Sidebar';
 import GlobalStyles from '../../styles/global';
 import MenuBar from "../MenuBar"
@@ -21,8 +20,6 @@ const Layout = ({ children }: LayoutProps) => {
   );
 };
 
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-};
+
 
 export default Layout;
