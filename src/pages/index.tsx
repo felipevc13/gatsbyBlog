@@ -25,26 +25,24 @@ export const postQuery= graphql`
 `;
 
 const IndexPage = () => {
-  const { allMarkdownRemark } = useStaticQuery(postQuery) as PostListQuery ;
+  const { allMarkdownRemark } = useStaticQuery<PostListQuery>(postQuery)  ;
 
   const postList = allMarkdownRemark.edges;
 
   return (
     <Layout>
       <SEO title="Home"/>
-      {postList.map(({ node }) => {
-        {!!node.frontmatter && (
+      {postList.map(({ node: {frontmatter}, node }) => {
+        {!!frontmatter && (
 <PostItem
-          background={node.frontmatter.background}
-          category={node.frontmatter.category}
-          date={node.frontmatter.date}
+          background={frontmatter.background}
+          category={frontmatter.category}
+          date={frontmatter.date}
           timeToRead={node.timeToRead}
-          title={node.frontmatter.title}
-          description={node.frontmatter.description}
+          title={frontmatter.title}
+          description={frontmatter.description}
         />
-
         )}
-        
       })}
     </Layout>
   );

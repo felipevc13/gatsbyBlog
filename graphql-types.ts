@@ -2501,7 +2501,6 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___name'
   | 'pluginCreator___version'
   | 'pluginCreator___pluginOptions___displayName'
-  | 'pluginCreator___pluginOptions___fileName'
   | 'pluginCreator___pluginOptions___minify'
   | 'pluginCreator___pluginOptions___transpileTemplateLiterals'
   | 'pluginCreator___pluginOptions___pure'
@@ -2715,7 +2714,6 @@ export type SitePluginFieldsEnum =
   | 'name'
   | 'version'
   | 'pluginOptions___displayName'
-  | 'pluginOptions___fileName'
   | 'pluginOptions___minify'
   | 'pluginOptions___transpileTemplateLiterals'
   | 'pluginOptions___pure'
@@ -2858,7 +2856,6 @@ export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 
 export type SitePluginPluginOptions = {
   displayName?: Maybe<Scalars['Boolean']>;
-  fileName?: Maybe<Scalars['Boolean']>;
   minify?: Maybe<Scalars['Boolean']>;
   transpileTemplateLiterals?: Maybe<Scalars['Boolean']>;
   pure?: Maybe<Scalars['Boolean']>;
@@ -2889,7 +2886,6 @@ export type SitePluginPluginOptions = {
 
 export type SitePluginPluginOptionsFilterInput = {
   displayName?: Maybe<BooleanQueryOperatorInput>;
-  fileName?: Maybe<BooleanQueryOperatorInput>;
   minify?: Maybe<BooleanQueryOperatorInput>;
   transpileTemplateLiterals?: Maybe<BooleanQueryOperatorInput>;
   pure?: Maybe<BooleanQueryOperatorInput>;
