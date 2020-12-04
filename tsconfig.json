@@ -1,7 +1,5 @@
-// tsconfig.json
 {
   "compilerOptions": {
-    "baseUrl": "src",
     "module": "commonjs",
     "target": "esnext",
     "jsx": "preserve",
@@ -11,7 +9,6 @@
     "isolatedModules": true,
     "esModuleInterop": true,
     "noUnusedLocals": false,
-    "allowJs": true,
     "types" : ["react"]
   },
   "exclude": ["node_modules", "public", ".cache"]
