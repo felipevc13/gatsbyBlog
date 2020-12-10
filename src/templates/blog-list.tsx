@@ -1,14 +1,21 @@
 import React from 'react';
 import { graphql, PageProps } from 'gatsby';
 import { PostListPagQuery } from '../../graphql-types';
+import { PaginationProps } from '../components/pagination';
 
 import Layout from '../components/Layout';
 import SEO from '../components/seo';
 import PostItem from '../components/PostItem';
+import Pagination from '../components/Pagination';
 
-const BlogList: React.FC<PageProps<PostListPagQuery>> = (props) => {
+const BlogList: React.FC<PageProps<PostListPagQuery, PaginationProps>> = (props) => {
   const postList = props.data.allMarkdownRemark.edges;
 
+  const { currentPage, numPages } = props.pageContext;
+  const isFirst = currentPage === 1;
+  const isLast = currentPage === numPages;
+  const prevPage = currentPage - 1 === 1 ? '/' : `/page/${currentPage - 1}`;
+  const nextPage = `/page/${currentPage + 1}`;
   return (
     <Layout>
       <SEO title="Home" />
@@ -24,6 +31,15 @@ const BlogList: React.FC<PageProps<PostListPagQuery>> = (props) => {
           description={node.frontmatter?.description}
         />
       ))}
+
+      <Pagination
+        isFirst={isFirst}
+        isLast={isLast}
+        numPages={numPages}
+        currentPage={currentPage}
+        prevPage={prevPage}
+        nextPage={nextPage}
+      />
     </Layout>
   );
 };

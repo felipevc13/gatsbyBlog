@@ -42,24 +42,43 @@ exports.createPages = ({ graphql, actions }) => {
             }
             timeToRead
           }
+          next {
+            id
+            fields {
+              slug
+            }
+            frontmatter {
+              title
+            }
+          }
+          previous {
+            id
+            fields {
+              slug
+            }
+            frontmatter {
+              title
+            }
+          }
         }
       }
     }
   `).then((result) => {
-    console.log(result);
     const posts = result.data.allMarkdownRemark.edges;
 
-    posts.forEach(({ node }) => {
+    posts.forEach(({ node, next, previous }) => {
       createPage({
         path: node.fields.slug,
         component: path.resolve('./src/templates/blog-post.tsx'),
         context: {
           slug: node.fields.slug,
+          previousPost: next,
+          nextPost: previous,
         },
       });
     });
 
-    const postsPerPage = 6;
+    const postsPerPage = 3;
     const numPages = Math.ceil(posts.length / postsPerPage);
 
     Array.from({ length: numPages }).forEach((_, index) => {
