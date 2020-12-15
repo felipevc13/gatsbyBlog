@@ -11,6 +11,7 @@ module.exports = {
     siteUrl: `https://felipe-blog.netlify.app`,
   },
   plugins: [
+    `gatsby-plugin-netlify-cms`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-transition-link`,
     `gatsby-plugin-styled-components`,
