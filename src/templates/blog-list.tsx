@@ -2,6 +2,7 @@ import React from 'react';
 import { graphql, PageProps } from 'gatsby';
 import { PostListPagQuery } from '../../graphql-types';
 import { PaginationProps } from '../components/pagination';
+import * as S from '../components/ListWrapper/styled';
 
 import Layout from '../components/Layout';
 import SEO from '../components/seo';
@@ -19,19 +20,20 @@ const BlogList: React.FC<PageProps<PostListPagQuery, PaginationProps>> = (props)
   return (
     <Layout>
       <SEO title="Home" />
-      {postList.map(({ node }) => (
-        <PostItem
-          slug={node.fields?.slug}
-          key={node.frontmatter?.title}
-          background={node.frontmatter?.background}
-          category={node.frontmatter?.category}
-          date={node.frontmatter?.date}
-          timeToRead={node.timeToRead}
-          title={node.frontmatter?.title}
-          description={node.frontmatter?.description}
-        />
-      ))}
-
+      <S.ListWrapper>
+        {postList.map(({ node }) => (
+          <PostItem
+            slug={node.fields?.slug}
+            key={node.frontmatter?.title}
+            background={node.frontmatter?.background}
+            category={node.frontmatter?.category}
+            date={node.frontmatter?.date}
+            timeToRead={node.timeToRead}
+            title={node.frontmatter?.title}
+            description={node.frontmatter?.description}
+          />
+        ))}
+      </S.ListWrapper>
       <Pagination
         isFirst={isFirst}
         isLast={isLast}

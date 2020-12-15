@@ -8,10 +8,12 @@ module.exports = {
     position: 'Backend Development',
     description: `A blog about frontend development and other cool stuff`,
     author: `@myblog`,
+    siteUrl: `https://johndoe.com.br`,
   },
   plugins: [
-    `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-transition-link`,
+    `gatsby-plugin-styled-components`,
     // needs to be the first one to work with gatsby-remark-images
     {
       resolve: `gatsby-source-filesystem`,
@@ -82,17 +84,18 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `John Doe`,
+        short_name: `John Doe`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#16202c`,
+        theme_color: `#16202c`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
+    `gatsby-plugin-sitemap`,
+    `gatsby-plugin-offline`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
   ],
 };

@@ -15,7 +15,11 @@ const BlogPost: React.FC<PageProps<PostQuery, SitePageContext>> = ({ data, pageC
   const previous = pageContext.previousPost;
   return (
     <Layout>
-      {!!post?.frontmatter?.title && <SEO title={post?.frontmatter?.title} />}
+      <SEO
+        title={post?.frontmatter?.title!}
+        description={post?.frontmatter?.description!}
+        image={post?.frontmatter?.image?.childImageSharp?.fluid?.src!}
+      />
       <S.PostHeader>
         <S.PostDate>
           {post?.frontmatter?.date} • {post?.timeToRead} min de leitura
@@ -43,6 +47,17 @@ export const query = graphql`
         title
         description
         date(locale: "pt-br", formatString: "DD [de] MMMM [de] YYYY")
+        image {
+          childImageSharp {
+            fluid(maxWidth: 300) {
+              base64
+              sizes
+              aspectRatio
+              src
+              srcSet
+            }
+          }
+        }
       }
       html
       timeToRead

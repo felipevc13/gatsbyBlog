@@ -25,6 +25,7 @@ const Search = () => {
             },
           }}
         />
+
         <Hits hitComponent={Hit} />
       </InstantSearch>
     </S.SearchWrapper>

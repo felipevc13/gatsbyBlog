@@ -7,9 +7,10 @@ type Props = {
   lang?: string;
   meta?: [];
   title: string;
+  image?: string;
 };
 
-const SEO = ({ description, lang, meta, title }: Props) => {
+const SEO = ({ description, lang, meta, title, image }: Props) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -18,6 +19,7 @@ const SEO = ({ description, lang, meta, title }: Props) => {
             title
             description
             author
+            siteUrl
           }
         }
       }
@@ -25,6 +27,8 @@ const SEO = ({ description, lang, meta, title }: Props) => {
   );
 
   const metaDescription = description || site.siteMetadata.description;
+  const url = site.siteMetadata.siteUrl;
+  const ogImage = `${url}${image || '/assets/img/cover.png'}`;
 
   return (
     <Helmet
@@ -47,12 +51,20 @@ const SEO = ({ description, lang, meta, title }: Props) => {
           content: metaDescription,
         },
         {
+          property: `og:image`,
+          content: ogImage,
+        },
+        {
           property: `og:type`,
           content: `website`,
         },
         {
           name: `twitter:card`,
-          content: `summary`,
+          content: `summary_large_image`,
+        },
+        {
+          name: `twitter:image:src`,
+          content: ogImage,
         },
         {
           name: `twitter:creator`,

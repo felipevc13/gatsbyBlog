@@ -11,5 +11,6 @@
     "noUnusedLocals": false,
     "types" : ["react", "node"]
   },
-  "exclude": ["node_modules", "public", ".cache"]
+  "exclude": ["node_modules", "public", ".cache"], 
+  "no-submodule-imports": [true, "gatsby-plugin-transition-link"]
 }

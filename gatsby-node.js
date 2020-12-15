@@ -39,6 +39,17 @@ exports.createPages = ({ graphql, actions }) => {
               date(locale: "pt-br", formatString: "DD [de] MMMM [de] YYYY")
               description
               title
+              image {
+                childImageSharp {
+                  fluid(maxWidth: 300) {
+                    base64
+                    sizes
+                    aspectRatio
+                    src
+                    srcSet
+                  }
+                }
+              }
             }
             timeToRead
           }
@@ -78,7 +89,7 @@ exports.createPages = ({ graphql, actions }) => {
       });
     });
 
-    const postsPerPage = 3;
+    const postsPerPage = 6;
     const numPages = Math.ceil(posts.length / postsPerPage);
 
     Array.from({ length: numPages }).forEach((_, index) => {
